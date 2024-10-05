@@ -1,0 +1,31 @@
+{
+    "name": "livspeedserver",
+    "version": "1.0.1",
+    "description": "Live network usage monitor",
+    "main": "index.js",
+    "bin": {
+        "livspeedserver": "index.js"
+    },
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "express": "^4.21.0"
+    },
+    "author": "Your Name",
+    "license": "ISC",
+    "keywords": [
+        "network",
+        "monitor",
+        "usage",
+        "live"
+    ],
+    "homepage": "https://github.com/yourusername/livspeedserver",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yourusername/livspeedserver.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yourusername/livspeedserver/issues"
+    }
+}
