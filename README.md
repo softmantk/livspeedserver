@@ -65,7 +65,7 @@ This project is a Node.js installation package named **livspeedserver** that mon
   livspeedserver --no-log
   ```
 
-## Night Mode
+## Night Mode 
 
 - Click the "Toggle Night Mode" button to switch between light and dark themes. Your preference will be saved in the browser's local storage.
 
