@@ -1,6 +1,6 @@
 {
   "name": "livspeedserver",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Live network usage monitor",
   "main": "src/app.js",
   "bin": {
