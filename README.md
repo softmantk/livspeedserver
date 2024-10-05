@@ -39,6 +39,7 @@ This project is a Node.js installation package named **livspeedserver** that mon
    ```bash
    livspeedserver
    ```
+
    You can also specify a custom port using the `-p` flag:
    ```bash
    livspeedserver -p 8080
@@ -51,6 +52,18 @@ This project is a Node.js installation package named **livspeedserver** that mon
 
 - The application serves static files from the `public` folder.
 - Network usage data is fetched from the endpoint `/network-usage`. Ensure you have a server or API providing this data in the correct format.
+
+## Command-Line Options
+
+- **Custom Port**: Specify a custom port with the `-p` option:
+  ```bash
+  livspeedserver -p 8080
+  ```
+
+- **Disable Console Logging**: To disable console logging of network speeds, use the `--no-log` option:
+  ```bash
+  livspeedserver --no-log
+  ```
 
 ## Night Mode
 

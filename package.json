@@ -4,15 +4,15 @@
     "description": "Live network usage monitor",
     "main": "index.js",
     "bin": {
-        "livspeedserver": "index.js"
+        "livspeedserver": "src/app.js"
     },
     "scripts": {
-        "start": "node index.js"
+        "start": "node src/app.js"
     },
     "dependencies": {
         "express": "^4.21.0"
     },
-    "author": "Your Name",
+    "author": "Softman",
     "license": "ISC",
     "keywords": [
         "network",
@@ -20,12 +20,12 @@
         "usage",
         "live"
     ],
-    "homepage": "https://github.com/yourusername/livspeedserver",
+    "homepage": "https://github.com/softmantk/livspeedserver",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/yourusername/livspeedserver.git"
+        "url": "https://github.com/softmantk/livspeedserver"
     },
     "bugs": {
-        "url": "https://github.com/yourusername/livspeedserver/issues"
+        "url": "https://github.com/softmantk/livspeedserver/issues"
     }
 }
