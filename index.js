@@ -3,6 +3,8 @@ const express = require('express');
 const { exec } = require('child_process');
 const os = require('os'); // Import the os module
 const app = express();
+const path = require('path')
+
 
 // Default port is 8010; can be changed with command-line argument
 const PORT = process.argv.includes('-p') ?
@@ -10,8 +12,8 @@ const PORT = process.argv.includes('-p') ?
 
 // Function to check if ifstat is installed
 const checkIfstat = () => {
-    return new Promise((resolve, reject) => {
-        exec('ifstat -v', (error, stdout, stderr) => {
+    return new Promise(( resolve, reject ) => {
+        exec('ifstat -v', ( error, stdout, stderr ) => {
             if (error) {
                 reject(error);
             } else {
@@ -38,9 +40,9 @@ const installInstructions = () => {
 
 // Function to fetch and log network usage
 const fetchNetworkUsage = () => {
-    exec('ifstat 1 1', (error, stdout, stderr) => {
+    exec('ifstat 1 1', ( error, stdout, stderr ) => {
         if (error) {
-            console.error(`exec error: ${error}`);
+            console.error(`exec error: ${ error }`);
             return;
         }
 
@@ -90,7 +92,7 @@ const fetchNetworkUsage = () => {
         const uploadMbps = (totalUploadKB * 8 / 1000).toFixed(2); // convert to Mbps
 
         // Log the speeds to the console on the same line
-        process.stdout.write(`\rUpload Speed: ${uploadMbps} Mbps, Download Speed: ${downloadMbps} Mbps`);
+        process.stdout.write(`\rUpload Speed: ${ uploadMbps } Mbps, Download Speed: ${ downloadMbps } Mbps`);
     });
 };
 
@@ -102,11 +104,14 @@ checkIfstat()
     // Set an interval to log network usage every second
     setInterval(fetchNetworkUsage, 1000);
 
+    app.use(express.static(path.join(__dirname, 'public')));
+
+
     // Define the /network-usage endpoint
-    app.get('/network-usage', (req, res) => {
-        exec('ifstat 1 1', (error, stdout, stderr) => {
+    app.get('/network-usage', ( req, res ) => {
+        exec('ifstat 1 1', ( error, stdout, stderr ) => {
             if (error) {
-                console.error(`exec error: ${error}`);
+                console.error(`exec error: ${ error }`);
                 return res.status(500).send('Error fetching network usage');
             }
 
@@ -158,41 +163,12 @@ checkIfstat()
         });
     });
 
-    // Define the root endpoint
-    app.get('/', (req, res) => {
-        res.send(`
-                <h1>Live Network Usage Monitor</h1>
-                <div id="results">
-                    <p>Upload Speed: <span id="upload">0</span> Mbps</p>
-                    <p>Download Speed: <span id="download">0</span> Mbps</p>
-                </div>
-                <script>
-                    function fetchUsage() {
-                        fetch('/network-usage')
-                            .then(response => response.json())
-                            .then(data => {
-                                document.getElementById('upload').innerText = data.upload;
-                                document.getElementById('download').innerText = data.download;
-                            })
-                            .catch(err => {
-                                console.error(err);
-                            });
-                    }
-
-                    // Fetch usage every second
-                    setInterval(fetchUsage, 1000);
-                    // Initial fetch
-                    fetchUsage();
-                </script>
-            `);
-    });
-
     // Start the Express server
     app.listen(PORT, () => {
-        console.log(`Server is running on http://localhost:${PORT}`);
+        console.log(`Server is running on http://localhost:${ PORT }`);
     });
 })
-.catch((error) => {
+.catch(( error ) => {
     console.error('ifstat is not installed. Please install it to use this application.');
     installInstructions();
 });

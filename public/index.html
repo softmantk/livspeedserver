@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Network Usage Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+</head>
+<body>
+<h1>Live Network Usage Monitor</h1>
+<div id="results">
+    <p>Current Upload Speed: <span class="value" id="upload">0</span> Mbps</p>
+    <p>Current Download Speed: <span class="value" id="download">0</span> Mbps</p>
+    <p>
+        Avg Speed: <span class="value" id="avgUpload">0</span> Mbps/ <span class="value" id="avgDownload">0</span> Mbps
+    </p>
+    <canvas id="usageChart" width="400" height="200"></canvas>
+</div>
+<button id="toggleNightMode">Toggle Night Mode</button>
+
+<script src="script.js"></script>
+
+</body>
+</html>
